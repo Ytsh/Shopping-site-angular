@@ -1,0 +1,53 @@
+<h1 mat-dialog-title>{{actionLabel}} Product Form</h1>
+
+<div mat-dialog-content>
+    <form [formGroup]="productForm" enctype="multipart/form-data">
+        <div class="row" style="column-gap: 20px;">
+            <div class="col-md-6">
+                <mat-form-field appearance="fill">
+                    <mat-label>Name</mat-label>
+                    <input formControlName="name" matInput />
+                </mat-form-field>
+                <mat-form-field appearance="fill" floatLabel="always">
+                    <mat-label>Price</mat-label>
+                    <input matInput type="number" min="1" formControlName="price" class="example-right-align" placeholder="0">
+                    <span matTextPrefix>Rs.&nbsp;</span>
+                    <span matTextSuffix>.00</span>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Category</mat-label>
+                    <mat-select placeholder="Category" formControlName="category">
+                      <mat-option value="">Option</mat-option>
+                      <div *ngFor="let category of categories">
+                          <mat-option value="{{category.id}}" selected="selected">
+                            {{category.name}}
+                          </mat-option>
+                      </div>
+                    </mat-select>
+                </mat-form-field>
+        
+                <mat-form-field >
+                    <mat-label>Description</mat-label>
+                    <textarea matInput formControlName="description"></textarea>
+                </mat-form-field>
+            </div>
+            <!-- <div class="col-md-5">
+                <input type="file"
+                    id="imageUrl" style="display: none;" (change)="onSelectFile($event)" accept="image/*">
+                <label for="imageUrl" class="border p-3 mb-2" type="button">Product Image</label>
+                
+                <img [src]="imageUrl" alt="" height="200">
+            </div> -->
+        </div>
+    </form>
+    
+
+</div>
+
+<div mat-dialog-actions [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+    <button style="margin-left: 8px;" mat-raised-button color="primary" 
+    (click)="addProduct()"
+    [disabled]="productForm.invalid">{{actionBtn}}</button>
+</div>

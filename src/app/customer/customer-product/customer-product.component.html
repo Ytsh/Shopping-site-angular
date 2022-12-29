@@ -1,0 +1,52 @@
+<div  class="container-fluid">
+    <div *ngFor="let cat of category">
+        <div *ngIf = "cat.products?.length">
+
+        
+        <h3 class="fw-bold">Category : {{cat.name}}</h3>
+        <!-- <mat-grid-list cols="2"  rowHeight="1:1"> -->
+            <!-- <mat-grid-tile> -->
+              <div class="container">
+        <div class="row">
+          <mat-card *ngFor="let pro of cat.products" class="example-card">
+            <div class="col-sm-6">
+              
+            
+            <mat-card-header>
+              <mat-card-title>{{pro.name}}</mat-card-title>
+              <mat-card-subtitle>{{cat.name}}</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image src="https://cdni.iconscout.com/illustration/premium/preview/before-login-no-product-in-cart-4006356-3309942.png?w=0&h=1400" alt="Girl in a jacket" width="300" height="200">
+        
+            <mat-card-content>
+              <p>
+                {{pro.description}}
+              </p>
+            </mat-card-content>
+            <mat-card-content>
+              Price:
+              <span  class="btn btn-primary btn-sm">{{pro.price}}</span>       
+            </mat-card-content>
+            <div *ngIf="isRoleAvailable('ROLE_USER')">
+
+              <mat-card-content>
+                <mat-form-field appearance="fill" floatLabel="always">
+                    <mat-label>Quantity</mat-label>
+                    <input matInput #quantity type="number" value=1 placeholder="0">
+                    <span matTextPrefix>&nbsp;</span>
+                </mat-form-field>
+              </mat-card-content>
+              <mat-card-content>
+                <button mat-button   *ngIf="quantity.value>'0'" color="primary" (click)="addtocart(quantity.value, pro)" >Add to Cart</button>
+              </mat-card-content>
+            </div>
+            </div>
+          </mat-card>
+      </div>
+    </div>
+    </div>
+</div>
+
+
+</div>
+

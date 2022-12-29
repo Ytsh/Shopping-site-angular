@@ -1,0 +1,156 @@
+<div class="container mt-2 p-3">
+    <div class="d-flex justify-content-between align-items-baseline">
+      <div class="col">
+        <!-- <mat-form-field>
+          <mat-label>Search Product</mat-label>
+          <input matInput (keyup)="applyFilter($event)" placeholder="Search Product" #input>
+        </mat-form-field> -->
+      </div>
+      <div class="col-md-2" [align]="'end'">
+        <button mat-raised-button (click)="addProduct()">Add Product</button>
+      </div>
+    </div>  
+      
+        
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource" matSort>
+  
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+          <td mat-cell *matCellDef="let row" style="width: 1%"> {{row.id}} </td>
+        </ng-container>
+    
+        <!-- <ng-container matColumnDef="imageUrl">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Image </th>
+          <td mat-cell *matCellDef="let row" style="width: 20%">
+                <img src="/assets/images/product/{{row.imageUrl}}" style="width: 50%; height: 50%;">
+          </td>
+        </ng-container> -->
+  
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Product Name </th>
+          <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="price">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Price </th>
+  
+          <td mat-cell *matCellDef="let row">{{row.price}}</td>
+        </ng-container>
+  
+        <ng-container matColumnDef="description">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
+  
+          <td mat-cell *matCellDef="let row">{{row.description}}</td>
+        </ng-container>
+  
+        <ng-container matColumnDef="category">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Category </th>
+  
+          <td mat-cell *matCellDef="let row">{{row.category != null ? row.category?.title : "-" }}</td>
+        </ng-container>
+  
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+  
+          <td mat-cell *matCellDef="let row"> 
+              <button mat-icon-button color="primary" (click)="editProduct(row)">
+                  <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button color="warn" (click)="deleteProduct(row.id)">
+                  <mat-icon>delete</mat-icon>
+              </button>
+              <!-- <button mat-icon-button (click)="goToItemDetails(row)">
+                <mat-icon>explore</mat-icon>
+            </button> -->
+              
+          </td>
+        </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    
+        <!-- <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+        </tr> -->
+      </table>
+      
+      <!-- <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator> -->
+    </div>
+  </div>
+  
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <!-- <div class="container-fluid mt-4">
+      
+      <div class="row mt-2 p-3 justify-content-around">
+          
+          <div class="col-md-8">
+              <div class="row ms-3" style="column-gap: 15px;">
+                  <div class="col-md-2 mb-3" style="width: 170px;" *ngFor="let category of categories">
+                      <mat-card>
+                          <img src="https://static-01.daraz.com.np/p/cf61a18616f3349b1891a3ca8aa5acd3.jpg" class="rounded mx-auto d-block mt-2" alt="...">
+  
+                          <mat-card-subtitle class="mx-auto">{{category.title}}</mat-card-subtitle>
+         
+  
+                          <mat-card-footer >
+                              <mat-card-actions class="mt-auto mx-auto">
+                                  <button mat-button>Update</button>
+                                  <button mat-button>Delete</button>
+                              </mat-card-actions>
+                          </mat-card-footer>
+                      </mat-card>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-3 border p-3 me-3" style="width: 400px; height: 400px;">
+              <h3>Add Category</h3>
+  
+              <form #addForm="ngForm" (ngSubmit)="onAddCategory(addForm)">
+                  <mat-form-field appearance="fill" class="me-2">
+                      <mat-label>Title</mat-label >
+                      <input matInput ngModel name="title" type="text" required>
+                  </mat-form-field> <br>
+                  <button mat-raised-button color="warn" [disabled]="addForm.invalid" type="submit">Add Category</button>
+              </form>
+          </div>
+      </div>
+  </div> -->
+  
+    
+  
+  
+  
+  

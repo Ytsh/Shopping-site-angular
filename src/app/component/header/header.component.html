@@ -1,0 +1,24 @@
+<mat-toolbar  color="primary">
+    <span (click)="backhome()">Shopping Site</span>
+    <button mat-button *ngIf="isLoggedIn && isRoleAvailable('ROLE_ADMIN')"  [matMenuTriggerFor]="menu">Menu</button>
+    <!-- {{category}} -->
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click) = "categoryCRUD()" >Category CRUD</button>
+        <button mat-menu-item [matMenuTriggerFor]="categories">Product-Category</button>
+        <mat-menu #categories="matMenu">
+            <button mat-menu-item *ngFor="let cat of category" (click) = "findProductByCategoryId(cat.id)" >{{cat.name}}</button>
+        </mat-menu>
+        <!-- <button mat-menu-item routerLink="/cart">Cart</button> -->
+    </mat-menu>
+    <span *ngIf="username">Welcome {{username}}</span>
+    <span class="spacer"></span>
+    <div class="right">
+
+      <button *ngIf="!isLoggedIn" (click)="login()" mat-icon-button aria-label="login">
+        <mat-icon>login</mat-icon>Login Guest
+      </button>
+      <button *ngIf="isLoggedIn" (click)="logout()" mat-icon-button aria-label="login">
+        <mat-icon>logout</mat-icon>{{isLoggedIn.username}}
+      </button>
+    </div>
+  </mat-toolbar>

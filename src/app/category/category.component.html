@@ -1,0 +1,60 @@
+
+
+
+
+
+
+<div class="container mt-2 p-3">
+  <div class="d-flex justify-content-between align-items-baseline">
+    <div class="col">
+
+    </div>
+    <div class="col-md-2" [align]="'end'">
+      <button mat-raised-button (click)="addCategory()">Add Category</button>
+    </div>
+  </div>  
+    
+      
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+        <td mat-cell *matCellDef="let row" style="width: 1%"> {{row.id}} </td>
+      </ng-container>
+  
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Category Name </th>
+        <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
+
+        <td mat-cell *matCellDef="let row">{{row.description}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+
+        <td mat-cell *matCellDef="let row"> 
+            <button mat-icon-button color="primary" (click)="editCategory(row)">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" (click)="deleteCategory(row.id)">
+                <mat-icon>delete</mat-icon>
+            </button>
+
+            
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
+    </table>
+    
+  </div>
+</div>
